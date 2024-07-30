@@ -1,4 +1,5 @@
 
+# PROVIDER VARIABLE
 
 variable "region" {
   type = string
@@ -6,6 +7,8 @@ variable "region" {
   default = "eu-west-2"
 }
 
+
+# VPC VARIABLE
 
 variable "vpc-cidr" {
   type = string
@@ -32,6 +35,9 @@ variable "dns-support" {
     description = "My dns support"
     default = true
 }
+
+
+# SUBNETS VARIABLES
 
 variable "pub-sub1" {
     type = string
