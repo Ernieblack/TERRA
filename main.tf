@@ -4,10 +4,10 @@
 # NETWORKING FOR Grace IT Group 
 
 resource "aws_vpc" "Grace_IT_Group" {
-  cidr_block           = "10.0.0.0/16"
-  instance_tenancy     = "default"
-  enable_dns_hostnames = true
-  enable_dns_support   = true
+  cidr_block           = var.vpc-cidr
+  instance_tenancy     = var.instance_tenancy
+  enable_dns_hostnames = var.dns-hostnames
+  enable_dns_support   = var.dns-support
 
 
   tags = {
@@ -21,7 +21,7 @@ resource "aws_vpc" "Grace_IT_Group" {
 
 resource "aws_subnet" "Prod-pub-sub1" {
   vpc_id     = aws_vpc.Grace_IT_Group.id
-  cidr_block = "10.0.1.0/24"
+  cidr_block = var.pub-sub1
 
   tags = {
     Name = "Prod-pub-sub1"
@@ -31,7 +31,7 @@ resource "aws_subnet" "Prod-pub-sub1" {
 
 resource "aws_subnet" "Prod-pub-sub2" {
   vpc_id     = aws_vpc.Grace_IT_Group.id
-  cidr_block = "10.0.2.0/24"
+  cidr_block = var.pub-sub2
 
   tags = {
     Name = "Prod-pub-sub2"
@@ -44,7 +44,7 @@ resource "aws_subnet" "Prod-pub-sub2" {
 
 resource "aws_subnet" "Prod-priv-sub1" {
   vpc_id     = aws_vpc.Grace_IT_Group.id
-  cidr_block = "10.0.3.0/24"
+  cidr_block = var.priv-sub1
 
   tags = {
     Name = "Prod-priv-sub1"
@@ -54,7 +54,7 @@ resource "aws_subnet" "Prod-priv-sub1" {
 
 resource "aws_subnet" "Prod-priv-sub2" {
   vpc_id     = aws_vpc.Grace_IT_Group.id
-  cidr_block = "10.0.4.0/24"
+  cidr_block = var.priv-sub2
 
   tags = {
     Name = "Prod-priv-sub2"
